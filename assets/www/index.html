@@ -18,9 +18,9 @@
 	    document.addEventListener("deviceready", onDeviceReady, false);
 	    var db;
 	    function onDeviceReady() {
-		console.log("console.log works well");
-		console.log(device.cordova);
-		db = window.sqlitePlugin.openDatabase({name: "DB"});
+			//	console.log("console.log works well");
+		//console.log(device.cordova);
+		db = window.openDatabase({name: "DB"});
 	    }
 	    function inseriNome() {
 		
@@ -32,7 +32,7 @@
 		var nomeInserido = new String(document.getElementById('idInsiraNome').value);
 		tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (data)');
 
-		tx.executeSql('INSERT INTO DEMO (data) VALUES ("' + i + '")');
+		tx.executeSql('INSERT INTO DEMO (data) VALUES ("' + nomeInserido  + '")');
 		
 	    }
 
@@ -64,9 +64,14 @@
 		console.log("DEMO table: " + len + " rows found.");
 		for (var i = 0; i < len; i++) {
 		    console.log("Row = " + i + " Data =  " + results.rows.item(i).data);
+		    document.getElementById('boldStuff').innerHTML = "Row = " + i + " Nome =  " + results.rows.item(i).data;
 		    alert("Row = " + i + " Nome =  " + results.rows.item(i).data);
 		}
+		
 	    }
+	    function changeText(){
+	document.getElementById('boldStuff').innerHTML = 'Fred Flinstone';
+}
 	    function errorCB(err) {
 		console.log("Error processing SQL: " + err.code);
 	    }
@@ -90,6 +95,8 @@
 	</br>
 	<form>
 	    <input type="submit" value="Buscar nomes" onclick="buscaNomes()">
+	    <p>Welcome to the site <b id='boldStuff'>dude</b> </p> 
+<input type='button' onclick='changeText()' value='Change Text'/>
 	</form>
         </br>
 	<form>
