@@ -19,6 +19,7 @@
 	    var db;
 	    function onDeviceReady() {
 		console.log("console.log works well");
+		console.log(device.cordova);
 		db = window.sqlitePlugin.openDatabase({name: "DB"});
 	    }
 	    function inseriNome() {
