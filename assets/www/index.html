@@ -18,6 +18,7 @@
 	    document.addEventListener("deviceready", onDeviceReady, false);
 	    var db;
 	    function onDeviceReady() {
+		console.log("console.log works well");
 		db = window.sqlitePlugin.openDatabase({name: "DB"});
 	    }
 	    function inseriNome() {
